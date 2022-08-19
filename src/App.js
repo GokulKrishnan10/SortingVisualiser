@@ -218,7 +218,7 @@ class App extends React.Component {
         if (right < n && arr[right] > arr[large]) {
             large = right;
         }
-        if (large != i) {
+        if (large !== i) {
             animations.push([i, large])
             animations.push([i, large])
             animations.push([i, large])
@@ -442,7 +442,7 @@ class App extends React.Component {
     }
 
     mergeSort = (arr, l, r, animations) => {
-        if (l == r) return;
+        if (l === r) return;
         let m = Math.floor((l + r) / 2);
         this.mergeSort(arr, l, m, animations)
         this.mergeSort(arr, m + 1, r, animations)
