@@ -41,12 +41,12 @@ const styles = {
     h3a: {
         marginTop: '0.3cm',
         position: 'absolute',
-        marginLeft: '2cm'
+        marginLeft: '1.5cm'
     },
     h4a: {
         marginTop: '0.2cm',
         position: 'absolute',
-        marginLeft: '29cm'
+        marginLeft: '34cm'
     },
     array_contain: {
         marginTop: '1.7cm',
@@ -93,14 +93,14 @@ const styles = {
     },
     button5: {
         fontWeight: 'bold',
-        marginLeft: '27cm',
+        marginLeft: '28cm',
         marginTop: '0.4cm',
         boxShadow: '0px 8px 15px rgba(71, 142, 255, 0.1)',
         position: 'absolute'
     },
     button6: {
         fontWeight: 'bold',
-        marginLeft: '30cm',
+        marginLeft: '31cm',
         marginTop: '0.4cm',
         boxShadow: '0px 8px 15px rgba(71, 142, 255, 0.1)',
         position: 'absolute'
@@ -160,8 +160,9 @@ const styles = {
         marginLeft: '0.3cm'
     },
     forceStop: {
+        marginLeft:'11cm',
         position: 'absolute',
-        marginTop: '0cm',
+        marginTop: '0.2cm',
         boxShadow: '2px 2px black',
         cursor: 'pointer',
         width: '4cm',
@@ -170,7 +171,7 @@ const styles = {
         color: 'white'
     },
     range: {
-        marginLeft: '30cm',
+        marginLeft: '34cm',
         marginTop: '0.9cm'
     }
 }
@@ -597,14 +598,13 @@ class App extends React.Component {
                 <div style={styles.navBar}>
                     <h3 style={styles.h3a}>Sorting Algorithm Visualiser</h3>
                     <button style={styles.forceStop} onClick={this.clickForce}>FORCE STOP</button>
-                    <button onClick={this.createArray} style={styles.button}>CREATE</button>
                     <button onClick={this.testBubbleSort} style={styles.button1}>Bubble Sort</button>
                     <button onClick={this.testQuickSort} style={styles.button2}>Quick Sort</button>
                     <button onClick={this.testMergeSort} style={styles.button3}>Merge Sort</button>
                     <button onClick={this.testHeapSort} style={styles.button4}>Heap Sort</button>
                     <button style={styles.button5} onClick={this.viewCode}>CODE</button>
                     <button style={styles.button6} onClick={this.closeCode}>CLOSE</button>
-                    <h4 style={styles.h4a}>Choose the range of values({this.state.range})</h4><input type="range" min="100" max="400" style={styles.range} onChange={this.rangeChange} />
+                    <h4 style={styles.h4a}>Choose the range({this.state.range})</h4><input type="range" min="100" max="400" style={styles.range} onChange={this.rangeChange} />
                 </div>
                 <div style={styles.array_contain}>
                     <div style={styles.bardiv} onLoad={this.createArray}>
