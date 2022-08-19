@@ -59,48 +59,48 @@ const styles = {
     button: {
         fontWeight: 'bold',
         marginTop: '0.4cm',
-        marginLeft: '9cm',
+        marginLeft: '13cm',
         boxShadow: '0px 8px 15px rgba(71, 142, 255, 0.1)',
         position: 'absolute'
     },
     button1: {
         fontWeight: 'bold',
-        marginLeft: '12cm',
+        marginLeft: '16cm',
         marginTop: '0.4cm',
         boxShadow: '0px 8px 15px rgba(71, 142, 255, 0.1)',
         position: 'absolute'
     },
     button2: {
         fontWeight: 'bold',
-        marginLeft: '15cm',
+        marginLeft: '19cm',
         marginTop: '0.4cm',
         boxShadow: '0px 8px 15px rgba(71, 142, 255, 0.1)',
         position: 'absolute'
     },
     button3: {
         fontWeight: 'bold',
-        marginLeft: '18cm',
+        marginLeft: '22cm',
         marginTop: '0.4cm',
         boxShadow: '0px 8px 15px rgba(71, 142, 255, 0.1)',
         position: 'absolute'
     },
     button4: {
         fontWeight: 'bold',
-        marginLeft: '21cm',
+        marginLeft: '25cm',
         marginTop: '0.4cm',
         boxShadow: '0px 8px 15px rgba(71, 142, 255, 0.1)',
         position: 'absolute'
     },
     button5: {
         fontWeight: 'bold',
-        marginLeft: '24cm',
+        marginLeft: '27cm',
         marginTop: '0.4cm',
         boxShadow: '0px 8px 15px rgba(71, 142, 255, 0.1)',
         position: 'absolute'
     },
     button6: {
         fontWeight: 'bold',
-        marginLeft: '26cm',
+        marginLeft: '30cm',
         marginTop: '0.4cm',
         boxShadow: '0px 8px 15px rgba(71, 142, 255, 0.1)',
         position: 'absolute'
