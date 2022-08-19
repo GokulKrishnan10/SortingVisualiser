@@ -604,9 +604,9 @@ class App extends React.Component {
                     <button style={styles.button5} onClick={this.viewCode}>CODE</button>
                     <button style={styles.button6} onClick={this.closeCode}>CLOSE</button>
                     <h4 style={styles.h4a}>Choose the range of values({this.state.range})</h4><input type="range" min="100" max="400" style={styles.range} onChange={this.rangeChange} />
+                    <button style={styles.forceStop} onClick={this.clickForce}>FORCE STOP</button>
                 </div>
                 <div style={styles.array_contain}>
-                    <button style={styles.forceStop} onClick={this.clickForce}>FORCE STOP</button>
                     <div style={styles.bardiv} onLoad={this.createArray}>
                         <Code view={this.state.view} />
                         {
