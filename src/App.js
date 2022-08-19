@@ -596,6 +596,7 @@ class App extends React.Component {
             <header>
                 <div style={styles.navBar}>
                     <h3 style={styles.h3a}>Sorting Algorithm Visualiser</h3>
+                    <button style={styles.forceStop} onClick={this.clickForce}>FORCE STOP</button>
                     <button onClick={this.createArray} style={styles.button}>CREATE</button>
                     <button onClick={this.testBubbleSort} style={styles.button1}>Bubble Sort</button>
                     <button onClick={this.testQuickSort} style={styles.button2}>Quick Sort</button>
@@ -604,7 +605,6 @@ class App extends React.Component {
                     <button style={styles.button5} onClick={this.viewCode}>CODE</button>
                     <button style={styles.button6} onClick={this.closeCode}>CLOSE</button>
                     <h4 style={styles.h4a}>Choose the range of values({this.state.range})</h4><input type="range" min="100" max="400" style={styles.range} onChange={this.rangeChange} />
-                    <button style={styles.forceStop} onClick={this.clickForce}>FORCE STOP</button>
                 </div>
                 <div style={styles.array_contain}>
                     <div style={styles.bardiv} onLoad={this.createArray}>
