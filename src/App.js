@@ -627,5 +627,4 @@ class App extends React.Component {
         )
     }
 }
-let done = false;
 export default App;
