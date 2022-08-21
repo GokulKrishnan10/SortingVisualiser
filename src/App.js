@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import React from 'react';
 
@@ -244,7 +243,7 @@ class App extends React.Component {
             arr[i] = t;
             this.heapify(arr, i, 0, animations);
         }
-        console.log("After Sorted HEAP sorting " + arr)
+       // console.log("After Sorted HEAP sorting " + arr)
     }
 
     sortHeap = (arr) => {
@@ -257,7 +256,7 @@ class App extends React.Component {
 
     testHeapSort = () => {
         const animations = this.sortHeap(this.state.arr)
-        console.log("Sorted array is " + this.state.arr)
+       // console.log("Sorted array is " + this.state.arr)
         for (let i = 0; i < animations.length; i++) {
             const arrayBars = document.getElementsByClassName('array_bar');
             //console.log(animations[i])
@@ -287,7 +286,7 @@ class App extends React.Component {
 
     randPartition = (arr, s, e, animations) => {
         let pivotIndex = Math.floor(getRandomArbitrary(s, e));
-        console.log("rand value is " + pivotIndex)
+      //  console.log("rand value is " + pivotIndex)
         animations.push([pivotIndex, e])
         animations.push([pivotIndex, e])
         animations.push([pivotIndex, e])
@@ -343,7 +342,7 @@ class App extends React.Component {
 
     testQuickSort = () => {
         const animations = this.sortQuick(this.state.arr)
-        console.log("Sorted array is " + this.state.arr)
+      //  console.log("Sorted array is " + this.state.arr)
         for (let i = 0; i < animations.length; i++) {
             const arrayBars = document.getElementsByClassName('array_bar');
             //console.log(animations[i])
