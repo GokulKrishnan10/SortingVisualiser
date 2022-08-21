@@ -59,6 +59,7 @@ const styles = {
         fontWeight: 'bold',
         marginTop: '0.4cm',
         marginLeft: '13cm',
+        cursor: 'pointer',
         boxShadow: '0px 8px 15px rgba(71, 142, 255, 0.1)',
         position: 'absolute'
     },
@@ -66,6 +67,7 @@ const styles = {
         fontWeight: 'bold',
         marginLeft: '16cm',
         marginTop: '0.4cm',
+        cursor: 'pointer',
         boxShadow: '0px 8px 15px rgba(71, 142, 255, 0.1)',
         position: 'absolute'
     },
@@ -73,6 +75,7 @@ const styles = {
         fontWeight: 'bold',
         marginLeft: '19cm',
         marginTop: '0.4cm',
+        cursor: 'pointer',
         boxShadow: '0px 8px 15px rgba(71, 142, 255, 0.1)',
         position: 'absolute'
     },
@@ -80,6 +83,7 @@ const styles = {
         fontWeight: 'bold',
         marginLeft: '22cm',
         marginTop: '0.4cm',
+        cursor: 'pointer',
         boxShadow: '0px 8px 15px rgba(71, 142, 255, 0.1)',
         position: 'absolute'
     },
@@ -87,6 +91,7 @@ const styles = {
         fontWeight: 'bold',
         marginLeft: '25cm',
         marginTop: '0.4cm',
+        cursor: 'pointer',
         boxShadow: '0px 8px 15px rgba(71, 142, 255, 0.1)',
         position: 'absolute'
     },
@@ -94,6 +99,7 @@ const styles = {
         fontWeight: 'bold',
         marginLeft: '28cm',
         marginTop: '0.4cm',
+        cursor: 'pointer',
         boxShadow: '0px 8px 15px rgba(71, 142, 255, 0.1)',
         position: 'absolute'
     },
