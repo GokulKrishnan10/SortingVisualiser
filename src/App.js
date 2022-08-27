@@ -632,7 +632,6 @@ class App extends React.Component {
               Merge Sort
             </li>
             <li onClick={this.testHeapSort} id="4">
-              {" "}
               Heap Sort
             </li>
           </ul>
