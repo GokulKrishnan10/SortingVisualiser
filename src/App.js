@@ -38,14 +38,16 @@ class Code extends React.Component {
 
 const styles = {
     h3a: {
-        marginTop: '0.3cm',
+        fontStyle:'normal',
+        marginTop: '0.75cm',
         position: 'absolute',
         marginLeft: '1.5cm'
     },
     h4a: {
-        marginTop: '0.2cm',
+        marginTop: '0.4cm',
         position: 'absolute',
-        marginLeft: '34cm'
+        marginLeft: '34cm',
+        top:'0'
     },
     array_contain: {
         marginTop: '1.7cm',
@@ -117,7 +119,7 @@ const styles = {
         margin: '0.8px'
     },
     navBar: {
-        display: 'inline-block',
+        display: 'inline',
         position: 'fixed',
         top: 0,
         left: 0,
@@ -126,7 +128,7 @@ const styles = {
         fontFamily: '"Segoe UI", Tahoma, Geneva, Verdana, sans-serif',
         fontStyle: 'oblique',
         backgroundColor: 'navy',
-        height: '1.5cm',
+        height: '2cm',
         width: '40cm',
         marginLeft: '0.1cm'
     },
@@ -176,8 +178,11 @@ const styles = {
         color: 'white'
     },
     range: {
+        top:'0',
         marginLeft: '34cm',
-        marginTop: '0.9cm'
+        position:'absolute',
+        marginTop: '1cm'
+     // overflow:'auto'
     }
 }
 class App extends React.Component {
@@ -602,13 +607,20 @@ class App extends React.Component {
             <header>
                 <div style={styles.navBar}>
                     <h3 style={styles.h3a}>Sorting Algorithm Visualiser</h3>
-                    <button style={styles.forceStop} onClick={this.clickForce}>FORCE STOP</button>
+                    <ul>
+                        <li onClick={()=>{window.location.reload()}} id="stop">FORCE STOP</li>
+                        <li onClick={this.testBubbleSort}>Bubble Sort</li>
+                        <li onClick={this.testQuickSort}>Quick Sort</li>
+                        <li onClick={this.testMergeSort}>Merge Sort</li>
+                        <li onClick={this.testHeapSort}> Heap Sort</li>
+                    </ul>
+                    {/* <button style={styles.forceStop} onClick={this.clickForce}>FORCE STOP</button>
                     <button onClick={this.testBubbleSort} style={styles.button1}>Bubble Sort</button>
                     <button onClick={this.testQuickSort} style={styles.button2}>Quick Sort</button>
                     <button onClick={this.testMergeSort} style={styles.button3}>Merge Sort</button>
                     <button onClick={this.testHeapSort} style={styles.button4}>Heap Sort</button>
                     <button style={styles.button5} onClick={this.viewCode}>CODE</button>
-                    <button style={styles.button6} onClick={this.closeCode}>CLOSE</button>
+                    <button style={styles.button6} onClick={this.closeCode}>CLOSE</button> */}
                     <h4 style={styles.h4a}>Choose the range({this.state.range})</h4><input type="range" min="100" max="400" style={styles.range} onChange={this.rangeChange} />
                 </div>
                 <div style={styles.array_contain}>

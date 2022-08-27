@@ -1,3 +1,27 @@
 body{
   background-color: black;
+  height: 240cm;
+}
+ul{
+  margin-top: 0.3cm;
+  margin-left:7cm;
+}
+li{
+  text-align:center;
+  margin-top: 0.1cm;
+  display: inline-block;
+  font-style: normal;
+  font-weight: bold;
+  list-style: none;
+  margin-left:1cm;
+  width:3cm;
+  height:1.5cm;
+}
+#stop{
+  background-color: red;
+}
+li:hover{
+  cursor: pointer;
+  color: black;
+  background-color: aqua;
 }
