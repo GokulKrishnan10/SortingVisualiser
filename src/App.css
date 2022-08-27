@@ -17,7 +17,7 @@ li{
   width:3cm;
   height:1.5cm;
 }
-#stop{
+#stop:hover{
   background-color: red;
 }
 li:hover{
