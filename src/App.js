@@ -610,7 +610,7 @@ class App extends React.Component {
   render() {
     const { arr } = this.state;
     return (
-      <header>
+      <>
         <div style={styles.navBar}>
           <h3 style={styles.h3a}>Sorting Algorithm Visualiser</h3>
           <ul>
@@ -669,7 +669,7 @@ class App extends React.Component {
             ))}
           </div>
         </div>
-      </header>
+      </>
     );
   }
 }
