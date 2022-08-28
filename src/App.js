@@ -1,4 +1,8 @@
 import "./App.css";
+import {BubbleSort} from "./SortingAlgos/bubbleSort.js";
+import {HeapSort} from "./SortingAlgos/HeapSort.js";
+import {MergeSort} from "./SortingAlgos/MergeSort.js";
+import {QuickSort} from "./SortingAlgos/QuickSort.js";
 import React from "react";
 
 function getRandomArbitrary(min, max) {
@@ -7,7 +11,6 @@ function getRandomArbitrary(min, max) {
 
 let str =
   "class BubbleSort {\n\tpublic void bubbleSort(int arr[]){\n\t\tint n = arr.length;\n\t\tfor (int i = 0; i < n - 1; i++)\n\t\t\tfor (int j = 0; j < n - i - 1; j++)\n\t\t\t\tif (arr[j] > arr[j + 1]) {\n\t\t\t\tint temp = arr[j];\n\t\t\t\tarr[j] = arr[j + 1];\n\t\t\t\tarr[j + 1] = temp;\n}}}";
-let com = 0;
 class Code extends React.Component {
   render() {
     return (
@@ -211,54 +214,10 @@ class App extends React.Component {
     this.createArray();
   }
 
-  heapify = (arr, n, i, animations) => {
-    let large = i;
-    let left = 2 * i + 1;
-    let right = 2 * i + 2;
-    if (left < n && arr[left] > arr[large]) {
-      large = left;
-    }
-    if (right < n && arr[right] > arr[large]) {
-      large = right;
-    }
-    if (large !== i) {
-      animations.push([i, large]);
-      animations.push([i, large]);
-      animations.push([i, large]);
-      let t = arr[i];
-      arr[i] = arr[large];
-      arr[large] = t;
-      this.heapify(arr, n, large, animations);
-    }
-  };
 
-  heapsort = (arr, animations) => {
-    let n = arr.length;
-    for (let i = Math.floor(n / 2 - 1); i >= 0; i--) {
-      this.heapify(arr, n, i, animations);
-    }
-    console.log("After Sorted " + arr);
-    for (let i = n - 1; i >= 0; i--) {
-      animations.push([0, i]);
-      animations.push([0, i]);
-      animations.push([0, i]);
-      let t = arr[0];
-      arr[0] = arr[i];
-      arr[i] = t;
-      this.heapify(arr, i, 0, animations);
-    }
-    // console.log("After Sorted HEAP sorting " + arr)
-  };
-
-  sortHeap = (arr) => {
-    const animations = [];
-    if (arr.length <= 1) return arr;
-    this.heapsort(arr, animations);
-    return animations;
-  };
 
   testHeapSort = () => {
-    const animations = this.sortHeap(this.state.arr);
+    const animations = HeapSort(this.state.arr);
     // console.log("Sorted array is " + this.state.arr)
     document.getElementById("1").style.pointerEvents = "none";
     document.getElementById("2").style.pointerEvents = "none";
@@ -295,68 +254,14 @@ class App extends React.Component {
     // document.getElementById("4").style.pointerEvents = "";
   };
 
-  randPartition = (arr, s, e, animations) => {
-    let pivotIndex = Math.floor(getRandomArbitrary(s, e));
-    //  console.log("rand value is " + pivotIndex)
-    animations.push([pivotIndex, e]);
-    animations.push([pivotIndex, e]);
-    animations.push([pivotIndex, e]);
-    // animations.push([pivotIndex,e])
-    let temp = arr[pivotIndex];
-    arr[pivotIndex] = arr[e];
-    arr[e] = temp;
-    return this.partition(arr, s, e, animations);
-  };
 
-  partition = (arr, s, e, animations) => {
-    let pivot = arr[e];
-    let pIndex = s;
-    for (let i = s; i < e; i++) {
-      if (arr[i] <= pivot) {
-        com++;
-        animations.push([pIndex, i]);
-        animations.push([pIndex, i]);
-        animations.push([pIndex, i]);
-        //animations.push([pIndex,i])
-        let t = arr[i];
-        arr[i] = arr[pIndex];
-        arr[pIndex] = t;
-        pIndex++;
-      }
-    }
-    com++;
-    animations.push([pIndex, e]);
-    animations.push([pIndex, e]);
-    animations.push([pIndex, e]);
-    // animations.push([pIndex,e])
-    let t = arr[pIndex];
-    arr[pIndex] = arr[e];
-    arr[e] = t;
-    return pIndex;
-  };
-
-  quickSort = (arr, s, e, animations) => {
-    if (s < e) {
-      let pIndex = this.randPartition(arr, s, e, animations);
-      this.quickSort(arr, s, pIndex - 1, animations);
-      this.quickSort(arr, pIndex + 1, e, animations);
-    }
-  };
-
-  sortQuick = (arr) => {
-    const animations = [];
-    if (arr.length <= 1) return arr;
-    this.quickSort(arr, 0, arr.length - 1, animations);
-    console.log(com + " comparitions for " + arr.length + " elements");
-    return animations;
-  };
 
   testQuickSort = () => {
     document.getElementById("1").style.pointerEvents = "none";
     document.getElementById("2").style.pointerEvents = "none";
     document.getElementById("3").style.pointerEvents = "none";
     document.getElementById("4").style.pointerEvents = "none";
-    const animations = this.sortQuick(this.state.arr);
+    const animations = QuickSort(this.state.arr);
     //  console.log("Sorted array is " + this.state.arr)
     for (let i = 0; i < animations.length; i++) {
       const arrayBars = document.getElementsByClassName("array_bar");
@@ -385,88 +290,13 @@ class App extends React.Component {
     }
   };
 
-  sortMerge = (arr) => {
-    const animations = [];
-    if (arr.length <= 1) return arr;
-    this.mergeSort(arr, 0, arr.length - 1, animations);
-    return animations;
-  };
-
-  merge = (arr, l, m, r, animations) => {
-    let i = 0,
-      j = 0;
-    let k = l;
-    let L = [];
-    let R = [];
-    let n1 = m - l + 1;
-    let n2 = r - m;
-    for (let i = 0; i < n1; ++i) L.push(arr[l + i]);
-    for (let j = 0; j < n2; ++j) R.push(arr[m + 1 + j]);
-    while (i < n1 && j < n2) {
-      animations.push([l + i, m + 1 + j]);
-      animations.push([l + i, m + 1 + j]);
-      if (L[i] <= R[j]) {
-        animations.push([k, L[i]]);
-        arr[k++] = L[i++];
-      } else {
-        animations.push([k, R[j]]);
-        arr[k++] = R[j++];
-      }
-    }
-    while (i < n1) {
-      animations.push([i + l, i + l]);
-      animations.push([i + l, i + l]);
-      animations.push([k, L[i]]);
-      arr[k++] = L[i++];
-    }
-    while (j < n2) {
-      animations.push([m + 1 + j, m + 1 + j]);
-      animations.push([m + 1 + j, m + 1 + j]);
-      animations.push([k, R[j]]);
-      arr[k++] = R[j++];
-    }
-    //NOT WORKING CODE
-    // let i = l, j = m + 1;
-    // let k = l;
-    // while (i <= m && j <= r) {
-    //     animations.push([i, j])
-    //     animations.push([i, j])
-    //     if (aux[i] <= aux[j]) {
-    //         animations.push([k, aux[i]])
-    //         arr[k++] = aux[i++];
-    //     } else {
-    //         animations.push([k, aux[j]])
-    //         arr[k++] = aux[j++];
-    //     }
-    // }
-    // while (i <= m) {
-    //     animations.push([i, i])
-    //     animations.push([i, i])
-    //     animations.push([k, aux[i]])
-    //     arr[k++] = aux[i++];
-    // }
-    // while (j <= r) {
-    //     animations.push([j, j])
-    //     animations.push([j, j])
-    //     animations.push([k, aux[j]])
-    //     arr[k++] = aux[j++];
-    // }
-  };
-
-  mergeSort = (arr, l, r, animations) => {
-    if (l === r) return;
-    let m = Math.floor((l + r) / 2);
-    this.mergeSort(arr, l, m, animations);
-    this.mergeSort(arr, m + 1, r, animations);
-    this.merge(arr, l, m, r, animations);
-  };
-
+ 
   testMergeSort = () => {
     document.getElementById("1").style.pointerEvents = "none";
     document.getElementById("2").style.pointerEvents = "none";
     document.getElementById("3").style.pointerEvents = "none";
     document.getElementById("4").style.pointerEvents = "none";
-    const animations = this.sortMerge(this.state.arr);
+    const animations = MergeSort(this.state.arr);
     for (let i = 0; i < animations.length; i++) {
       const arrayBars = document.getElementsByClassName("array_bar");
       console.log(animations[i]);
@@ -491,26 +321,7 @@ class App extends React.Component {
     }
   };
 
-  bubbleSort = (arr) => {
-    const animations = [];
-    let c = 0;
-    for (var i = 0; i < arr.length; i++) {
-      for (var j = 0; j < arr.length - i - 1; j++) {
-        const animation = {};
-        if (arr[j] > arr[j + 1]) {
-          animation.compare = [j, j + 1];
-          animation.swap = [j, j + 1];
-          var temp = arr[j];
-          arr[j] = arr[j + 1];
-          arr[j + 1] = temp;
-          c++;
-          animations.push(animation);
-        }
-      }
-    }
-    console.log("HELLO " + c + " iterations");
-    return animations;
-  };
+  
 
   testBubbleSort = () => {
     document.getElementById("1").style.pointerEvents = "none";
@@ -519,7 +330,7 @@ class App extends React.Component {
     document.getElementById("4").style.pointerEvents = "none";
     console.log("IT's Selected or not: " + this.state.run);
     console.log("IT's Selected or not: " + this.state.run);
-    const animations = this.bubbleSort(this.state.arr);
+    const animations = BubbleSort(this.state.arr);
     console.log("Sorted array is " + this.state.arr);
     const newAnimations = [];
     console.log("Animations length " + animations.length);

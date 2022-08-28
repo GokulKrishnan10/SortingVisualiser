@@ -1,0 +1,20 @@
+export function BubbleSort(arr){
+    const animations = [];
+    let c = 0;
+    for (var i = 0; i < arr.length; i++) {
+      for (var j = 0; j < arr.length - i - 1; j++) {
+        const animation = {};
+        if (arr[j] > arr[j + 1]) {
+          animation.compare = [j, j + 1];
+          animation.swap = [j, j + 1];
+          var temp = arr[j];
+          arr[j] = arr[j + 1];
+          arr[j + 1] = temp;
+          c++;
+          animations.push(animation);
+        }
+      }
+    }
+    console.log("HELLO " + c + " iterations");
+    return animations;
+}
