@@ -1,8 +1,8 @@
 import "./App.css";
-import {BubbleSort} from "./SortingAlgos/bubbleSort.js";
-import {HeapSort} from "./SortingAlgos/HeapSort.js";
-import {MergeSort} from "./SortingAlgos/MergeSort.js";
-import {QuickSort} from "./SortingAlgos/QuickSort.js";
+import { BubbleSort } from "./SortingAlgos/bubbleSort.js";
+import { HeapSort } from "./SortingAlgos/HeapSort.js";
+import { MergeSort } from "./SortingAlgos/MergeSort.js";
+import { QuickSort } from "./SortingAlgos/QuickSort.js";
 import React from "react";
 
 function getRandomArbitrary(min, max) {
@@ -214,15 +214,16 @@ class App extends React.Component {
     this.createArray();
   }
 
-
-
   testHeapSort = () => {
     const animations = HeapSort(this.state.arr);
     // console.log("Sorted array is " + this.state.arr)
-    document.getElementById("1").style.pointerEvents = "none";
-    document.getElementById("2").style.pointerEvents = "none";
-    document.getElementById("3").style.pointerEvents = "none";
-    document.getElementById("4").style.pointerEvents = "none";
+    document
+      .querySelectorAll("li")
+      .forEach((items) => (items.style.pointerEvents = "none"));
+    // document.getElementById("1").style.pointerEvents = "none";
+    // document.getElementById("2").style.pointerEvents = "none";
+    // document.getElementById("3").style.pointerEvents = "none";
+    // document.getElementById("4").style.pointerEvents = "none";
     for (let i = 0; i < animations.length; i++) {
       const arrayBars = document.getElementsByClassName("array_bar");
       //console.log(animations[i])
@@ -254,13 +255,14 @@ class App extends React.Component {
     // document.getElementById("4").style.pointerEvents = "";
   };
 
-
-
   testQuickSort = () => {
-    document.getElementById("1").style.pointerEvents = "none";
-    document.getElementById("2").style.pointerEvents = "none";
-    document.getElementById("3").style.pointerEvents = "none";
-    document.getElementById("4").style.pointerEvents = "none";
+    document
+      .querySelectorAll("li")
+      .forEach((items) => (items.style.pointerEvents = "none"));
+    // document.getElementById("1").style.pointerEvents = "none";
+    // document.getElementById("2").style.pointerEvents = "none";
+    // document.getElementById("3").style.pointerEvents = "none";
+    // document.getElementById("4").style.pointerEvents = "none";
     const animations = QuickSort(this.state.arr);
     //  console.log("Sorted array is " + this.state.arr)
     for (let i = 0; i < animations.length; i++) {
@@ -290,12 +292,14 @@ class App extends React.Component {
     }
   };
 
- 
   testMergeSort = () => {
-    document.getElementById("1").style.pointerEvents = "none";
-    document.getElementById("2").style.pointerEvents = "none";
-    document.getElementById("3").style.pointerEvents = "none";
-    document.getElementById("4").style.pointerEvents = "none";
+    document
+      .querySelectorAll("li")
+      .forEach((items) => (items.style.pointerEvents = "none"));
+    // document.getElementById("1").style.pointerEvents = "none";
+    // document.getElementById("2").style.pointerEvents = "none";
+    // document.getElementById("3").style.pointerEvents = "none";
+    // document.getElementById("4").style.pointerEvents = "none";
     const animations = MergeSort(this.state.arr);
     for (let i = 0; i < animations.length; i++) {
       const arrayBars = document.getElementsByClassName("array_bar");
@@ -321,13 +325,14 @@ class App extends React.Component {
     }
   };
 
-  
-
   testBubbleSort = () => {
-    document.getElementById("1").style.pointerEvents = "none";
-    document.getElementById("2").style.pointerEvents = "none";
-    document.getElementById("3").style.pointerEvents = "none";
-    document.getElementById("4").style.pointerEvents = "none";
+    document
+      .querySelectorAll("li")
+      .forEach((items) => (items.style.pointerEvents = "none"));
+    // document.getElementById("1").style.pointerEvents = "none";
+    // document.getElementById("2").style.pointerEvents = "none";
+    // document.getElementById("3").style.pointerEvents = "none";
+    // document.getElementById("4").style.pointerEvents = "none";
     console.log("IT's Selected or not: " + this.state.run);
     console.log("IT's Selected or not: " + this.state.run);
     const animations = BubbleSort(this.state.arr);
@@ -385,10 +390,13 @@ class App extends React.Component {
     this.setState({
       range: event.target.value,
     });
-    document.getElementById("1").style.pointerEvents = "";
-    document.getElementById("2").style.pointerEvents = "";
-    document.getElementById("3").style.pointerEvents = "";
-    document.getElementById("4").style.pointerEvents = "";
+    document
+      .querySelectorAll("li")
+      .forEach((items) => (items.style.pointerEvents = ""));
+    // document.getElementById("1").style.pointerEvents = "";
+    // document.getElementById("2").style.pointerEvents = "";
+    // document.getElementById("3").style.pointerEvents = "";
+    // document.getElementById("4").style.pointerEvents = "";
     this.createArray();
     // console.log(this.state.arr)
   };
