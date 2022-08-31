@@ -220,6 +220,7 @@ class App extends React.Component {
     document
       .querySelectorAll("li")
       .forEach((items) => (items.style.pointerEvents = "none"));
+    document.getElementById('stop').style.pointerEvents="";
     // document.getElementById("1").style.pointerEvents = "none";
     // document.getElementById("2").style.pointerEvents = "none";
     // document.getElementById("3").style.pointerEvents = "none";
@@ -259,6 +260,7 @@ class App extends React.Component {
     document
       .querySelectorAll("li")
       .forEach((items) => (items.style.pointerEvents = "none"));
+    document.getElementById('stop').style.pointerEvents="";
     // document.getElementById("1").style.pointerEvents = "none";
     // document.getElementById("2").style.pointerEvents = "none";
     // document.getElementById("3").style.pointerEvents = "none";
@@ -296,6 +298,7 @@ class App extends React.Component {
     document
       .querySelectorAll("li")
       .forEach((items) => (items.style.pointerEvents = "none"));
+    document.getElementById('stop').style.pointerEvents="";
     // document.getElementById("1").style.pointerEvents = "none";
     // document.getElementById("2").style.pointerEvents = "none";
     // document.getElementById("3").style.pointerEvents = "none";
@@ -328,7 +331,8 @@ class App extends React.Component {
   testBubbleSort = () => {
     document
       .querySelectorAll("li")
-      .forEach((items) => (items.style.pointerEvents = "none"));
+      .forEach((items) =>(items.style.pointerEvents = "none"));
+    document.getElementById('stop').style.pointerEvents="";
     // document.getElementById("1").style.pointerEvents = "none";
     // document.getElementById("2").style.pointerEvents = "none";
     // document.getElementById("3").style.pointerEvents = "none";
@@ -418,14 +422,6 @@ class App extends React.Component {
     });
   };
 
-  clickForce = () => {
-    console.log("Force stop setting none");
-    this.setState({
-      force: true,
-    });
-    window.location.reload();
-  };
-
   render() {
     const { arr } = this.state;
     return (
@@ -437,7 +433,7 @@ class App extends React.Component {
               onClick={() => {
                 window.location.reload();
               }}
-              id="stop"
+                id="stop"
             >
               FORCE STOP
             </li>
