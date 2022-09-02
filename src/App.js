@@ -205,9 +205,10 @@ class App extends React.Component {
     this.state = {
       arr: [],
       range: 100,
-      width: 1,
+      width: 13,
       view: "none",
       force: false,
+      speed: 20
     };
   }
 
@@ -259,7 +260,7 @@ class App extends React.Component {
               arrayBars[barTwoIdx].style.height = h1;
             }, 2);
           }
-        }, i * 10);
+        }, i *this.state.speed);
       }
     }
   };
@@ -404,10 +405,41 @@ class App extends React.Component {
   rangeChange = (event) => {
     this.setState({
       range: event.target.value,
-    });
+    })
     document
       .querySelectorAll("li")
       .forEach((items) => (items.style.pointerEvents = ""));
+    console.log(event.target.value)
+    if(event.target.value<=100){
+      this.setState({width:13})
+    }
+    else if(event.target.value>100 && event.target.value<=134){
+      this.setState({width:10})
+    }
+    else if(event.target.value>134 && event.target.value<=160){
+      this.setState({width:8})
+    }
+    else if(event.target.value>160 && event.target.value<=184){
+      this.setState({width:7})
+    }
+    else if(event.target.value>184 && event.target.value<=210){
+      this.setState({width:6})
+    }
+    else if(event.target.value>210 && event.target.value<=243){
+      this.setState({width:5})
+    }
+    else if(event.target.value>243 && event.target.value<=295){
+      this.setState({width:4})
+    }
+    else if(event.target.value>295 && event.target.value<=327){
+      this.setState({width:3.5})
+    }
+    else if(event.target.value>327 && event.target.value<=365){
+      this.setState({width:3})
+    }
+    else{
+      this.setState({width:2.7})
+    }
     this.createArray();
     // console.log(this.state.arr)
   };
@@ -467,7 +499,7 @@ class App extends React.Component {
                 style={{
                   height: `${value}px`,
                   backgroundColor: "turquoise",
-                  width: "2.25px",
+                  width: `${this.state.width}px`,
                   display: "inline-block",
                   margin: "0.5px",
                 }}
