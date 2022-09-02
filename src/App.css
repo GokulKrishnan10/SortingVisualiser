@@ -18,10 +18,10 @@ li{
   height:1.5cm;
 }
 #stop:hover{
-  background-color: red;
+  background-color: red  !important;
 }
 li:hover{
   cursor: pointer;
-  color: black;
-  background-color: aqua;
+  color: black !important;
+  background-color: aqua !important;;
 }

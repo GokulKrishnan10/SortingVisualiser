@@ -9,8 +9,21 @@ function getRandomArbitrary(min, max) {
   return Math.random() * (max - min) + min;
 }
 
-let str =
-  "class BubbleSort {\n\tpublic void bubbleSort(int arr[]){\n\t\tint n = arr.length;\n\t\tfor (int i = 0; i < n - 1; i++)\n\t\t\tfor (int j = 0; j < n - i - 1; j++)\n\t\t\t\tif (arr[j] > arr[j + 1]) {\n\t\t\t\tint temp = arr[j];\n\t\t\t\tarr[j] = arr[j + 1];\n\t\t\t\tarr[j + 1] = temp;\n}}}";
+let str = 
+`class BubbleSort {
+    public void bubbleSort(int arr[]){
+      int n = arr.length;
+      for (int i = 0; i < n - 1; i++){
+        for (int j = 0; j < n - i - 1; j++){
+          if (arr[j] > arr[j + 1]){
+            int temp = arr[j];
+            arr[j] = arr[j + 1];
+            arr[j + 1] = temp;
+          }
+        }
+      }  
+    }
+  }`;
 class Code extends React.Component {
   render() {
     return (
@@ -215,19 +228,19 @@ class App extends React.Component {
   }
 
   testHeapSort = () => {
+    document.querySelectorAll("li").forEach((items) => {
+      items.style.backgroundColor = "navy";
+      items.style.color = "white";
+    });
+    document.getElementById("4").style.backgroundColor = "aqua";
+    document.getElementById("4").style.color = "black";
     const animations = HeapSort(this.state.arr);
-    // console.log("Sorted array is " + this.state.arr)
     document
       .querySelectorAll("li")
       .forEach((items) => (items.style.pointerEvents = "none"));
-    document.getElementById('stop').style.pointerEvents="";
-    // document.getElementById("1").style.pointerEvents = "none";
-    // document.getElementById("2").style.pointerEvents = "none";
-    // document.getElementById("3").style.pointerEvents = "none";
-    // document.getElementById("4").style.pointerEvents = "none";
+    document.getElementById("stop").style.pointerEvents = "";
     for (let i = 0; i < animations.length; i++) {
       const arrayBars = document.getElementsByClassName("array_bar");
-      //console.log(animations[i])
       const colorchange = i % 3 !== 2;
       if (colorchange) {
         const [barOneIdx, barTwoIdx] = animations[i];
@@ -235,7 +248,6 @@ class App extends React.Component {
         const barTwoStyle = arrayBars[barTwoIdx].style;
         const color = i % 3 === 0 ? "red" : "turquoise";
         setTimeout(() => {
-          //  console.log(color)
           barOneStyle.backgroundColor = color;
           barTwoStyle.backgroundColor = color;
           if (color === "red") {
@@ -250,26 +262,22 @@ class App extends React.Component {
         }, i * 10);
       }
     }
-    // document.getElementById("1").style.pointerEvents = "";
-    // document.getElementById("2").style.pointerEvents = "";
-    // document.getElementById("3").style.pointerEvents = "";
-    // document.getElementById("4").style.pointerEvents = "";
   };
 
   testQuickSort = () => {
+    document.querySelectorAll("li").forEach((items) => {
+      items.style.backgroundColor = "navy";
+      items.style.color = "white";
+    });
+    document.getElementById("2").style.backgroundColor = "aqua";
+    document.getElementById("2").style.color = "black";
     document
       .querySelectorAll("li")
       .forEach((items) => (items.style.pointerEvents = "none"));
-    document.getElementById('stop').style.pointerEvents="";
-    // document.getElementById("1").style.pointerEvents = "none";
-    // document.getElementById("2").style.pointerEvents = "none";
-    // document.getElementById("3").style.pointerEvents = "none";
-    // document.getElementById("4").style.pointerEvents = "none";
+    document.getElementById("stop").style.pointerEvents = "";
     const animations = QuickSort(this.state.arr);
-    //  console.log("Sorted array is " + this.state.arr)
     for (let i = 0; i < animations.length; i++) {
       const arrayBars = document.getElementsByClassName("array_bar");
-      //console.log(animations[i])
       const colorchange = i % 3 !== 2;
       if (colorchange) {
         const [barOneIdx, barTwoIdx] = animations[i];
@@ -277,7 +285,6 @@ class App extends React.Component {
         const barTwoStyle = arrayBars[barTwoIdx].style;
         const color = i % 3 === 0 ? "red" : "turquoise";
         setTimeout(() => {
-          //  console.log(color)
           barOneStyle.backgroundColor = color;
           barTwoStyle.backgroundColor = color;
           if (color === "red") {
@@ -295,14 +302,16 @@ class App extends React.Component {
   };
 
   testMergeSort = () => {
+    document.querySelectorAll("li").forEach((items) => {
+      items.style.backgroundColor = "navy";
+      items.style.color = "white";
+    });
+    document.getElementById("3").style.backgroundColor = "aqua";
+    document.getElementById("3").style.color = "black";
     document
       .querySelectorAll("li")
       .forEach((items) => (items.style.pointerEvents = "none"));
-    document.getElementById('stop').style.pointerEvents="";
-    // document.getElementById("1").style.pointerEvents = "none";
-    // document.getElementById("2").style.pointerEvents = "none";
-    // document.getElementById("3").style.pointerEvents = "none";
-    // document.getElementById("4").style.pointerEvents = "none";
+    document.getElementById("stop").style.pointerEvents = "";
     const animations = MergeSort(this.state.arr);
     for (let i = 0; i < animations.length; i++) {
       const arrayBars = document.getElementsByClassName("array_bar");
@@ -329,18 +338,17 @@ class App extends React.Component {
   };
 
   testBubbleSort = () => {
+    document.querySelectorAll("li").forEach((items) => {
+      items.style.backgroundColor = "navy";
+      items.style.color = "white";
+    });
+    document.getElementById("1").style.backgroundColor = "aqua";
+    document.getElementById("1").style.color = "black";
     document
       .querySelectorAll("li")
-      .forEach((items) =>(items.style.pointerEvents = "none"));
-    document.getElementById('stop').style.pointerEvents="";
-    // document.getElementById("1").style.pointerEvents = "none";
-    // document.getElementById("2").style.pointerEvents = "none";
-    // document.getElementById("3").style.pointerEvents = "none";
-    // document.getElementById("4").style.pointerEvents = "none";
-    console.log("IT's Selected or not: " + this.state.run);
-    console.log("IT's Selected or not: " + this.state.run);
+      .forEach((items) => (items.style.pointerEvents = "none"));
+    document.getElementById("stop").style.pointerEvents = "";
     const animations = BubbleSort(this.state.arr);
-    console.log("Sorted array is " + this.state.arr);
     const newAnimations = [];
     console.log("Animations length " + animations.length);
     for (const animie of animations) {
@@ -372,6 +380,9 @@ class App extends React.Component {
         }, i * 10);
       }
     }
+    console.log("Completed Sorting");
+    // setTimeout(callback,1000);
+    //  document.querySelector('#range').style.pointerEvents="";
     /*   const { compare, swap } = animations[i];
            console.log("ith element is " + animations[i].compare)
            setTimeout(() => {
@@ -397,29 +408,8 @@ class App extends React.Component {
     document
       .querySelectorAll("li")
       .forEach((items) => (items.style.pointerEvents = ""));
-    // document.getElementById("1").style.pointerEvents = "";
-    // document.getElementById("2").style.pointerEvents = "";
-    // document.getElementById("3").style.pointerEvents = "";
-    // document.getElementById("4").style.pointerEvents = "";
     this.createArray();
     // console.log(this.state.arr)
-  };
-
-  create = () => {
-    console.log("On Loading......");
-  };
-
-  viewCode = () => {
-    this.setState({
-      view: "block",
-    });
-    console.log(this.state.view);
-  };
-
-  closeCode = () => {
-    this.setState({
-      view: "none",
-    });
   };
 
   render() {
@@ -433,7 +423,7 @@ class App extends React.Component {
               onClick={() => {
                 window.location.reload();
               }}
-                id="stop"
+              id="stop"
             >
               FORCE STOP
             </li>
@@ -463,6 +453,7 @@ class App extends React.Component {
             min="100"
             max="400"
             style={styles.range}
+            id="range"
             onChange={this.rangeChange}
           />
         </div>
