@@ -38,32 +38,6 @@ const merge = function (arr, l, m, r, animations) {
     animations.push([k, R[j]]);
     arr[k++] = R[j++];
   }
-  //NOT WORKING CODE
-  // let i = l, j = m + 1;
-  // let k = l;
-  // while (i <= m && j <= r) {
-  //     animations.push([i, j])
-  //     animations.push([i, j])
-  //     if (aux[i] <= aux[j]) {
-  //         animations.push([k, aux[i]])
-  //         arr[k++] = aux[i++];
-  //     } else {
-  //         animations.push([k, aux[j]])
-  //         arr[k++] = aux[j++];
-  //     }
-  // }
-  // while (i <= m) {
-  //     animations.push([i, i])
-  //     animations.push([i, i])
-  //     animations.push([k, aux[i]])
-  //     arr[k++] = aux[i++];
-  // }
-  // while (j <= r) {
-  //     animations.push([j, j])
-  //     animations.push([j, j])
-  //     animations.push([k, aux[j]])
-  //     arr[k++] = aux[j++];
-  // }
 };
 
 const mergeSort=function(arr, l, r, animations) {

@@ -525,13 +525,6 @@ class App extends React.Component {
               Heap Sort
             </li>
           </ul>
-          {/* <button style={styles.forceStop} onClick={this.clickForce}>FORCE STOP</button>
-                    <button onClick={this.testBubbleSort} style={styles.button1}>Bubble Sort</button>
-                    <button onClick={this.testQuickSort} style={styles.button2}>Quick Sort</button>
-                    <button onClick={this.testMergeSort} style={styles.button3}>Merge Sort</button>
-                    <button onClick={this.testHeapSort} style={styles.button4}>Heap Sort</button>
-                    <button style={styles.button5} onClick={this.viewCode}>CODE</button>
-                    <button style={styles.button6} onClick={this.closeCode}>CLOSE</button> */}
           <h4 style={styles.h4a}>Choose the range({this.state.range})</h4>
           <input
             type="range"
