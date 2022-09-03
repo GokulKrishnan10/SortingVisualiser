@@ -9,8 +9,7 @@ function getRandomArbitrary(min, max) {
   return Math.random() * (max - min) + min;
 }
 
-let str = 
-`class BubbleSort {
+let str = `class BubbleSort {
     public void bubbleSort(int arr[]){
       int n = arr.length;
       for (int i = 0; i < n - 1; i++){
@@ -208,7 +207,7 @@ class App extends React.Component {
       width: 13,
       view: "none",
       force: false,
-      speed: 20
+      speed: 20,
     };
   }
 
@@ -260,7 +259,7 @@ class App extends React.Component {
               arrayBars[barTwoIdx].style.height = h1;
             }, 2);
           }
-        }, i *this.state.speed);
+        }, i * this.state.speed);
       }
     }
   };
@@ -405,43 +404,61 @@ class App extends React.Component {
   rangeChange = (event) => {
     this.setState({
       range: event.target.value,
-    })
+    });
     document
       .querySelectorAll("li")
       .forEach((items) => (items.style.pointerEvents = ""));
-    console.log(event.target.value)
-    if(event.target.value<=100){
-      this.setState({width:13})
-    }
-    else if(event.target.value>100 && event.target.value<=134){
-      this.setState({width:10})
-    }
-    else if(event.target.value>134 && event.target.value<=160){
-      this.setState({width:8})
-    }
-    else if(event.target.value>160 && event.target.value<=184){
-      this.setState({width:7})
-    }
-    else if(event.target.value>184 && event.target.value<=210){
-      this.setState({width:6})
-    }
-    else if(event.target.value>210 && event.target.value<=243){
-      this.setState({width:5})
-    }
-    else if(event.target.value>243 && event.target.value<=295){
-      this.setState({width:4})
-    }
-    else if(event.target.value>295 && event.target.value<=327){
-      this.setState({width:3.5})
-    }
-    else if(event.target.value>327 && event.target.value<=365){
-      this.setState({width:3})
-    }
-    else{
-      this.setState({width:2.7})
+    console.log(event.target.value);
+    if (event.target.value <= 100) {
+      this.setState({ width: 13 });
+    } else if (event.target.value > 100 && event.target.value <= 134) {
+      this.setState({ width: 10 });
+    } else if (event.target.value > 134 && event.target.value <= 160) {
+      this.setState({ width: 8 });
+    } else if (event.target.value > 160 && event.target.value <= 184) {
+      this.setState({ width: 7 });
+    } else if (event.target.value > 184 && event.target.value <= 210) {
+      this.setState({ width: 6 });
+    } else if (event.target.value > 210 && event.target.value <= 243) {
+      this.setState({ width: 5 });
+    } else if (event.target.value > 243 && event.target.value <= 295) {
+      this.setState({ width: 4 });
+    } else if (event.target.value > 295 && event.target.value <= 327) {
+      this.setState({ width: 3.5 });
+    } else if (event.target.value > 327 && event.target.value <= 365) {
+      this.setState({ width: 3 });
+    } else {
+      this.setState({ width: 2.7 });
     }
     this.createArray();
     // console.log(this.state.arr)
+  };
+
+  MouseOver = () => {
+    const div = document.createElement("div");
+    div.style.height = "2cm";
+    div.style.width = "7cm";
+    div.style.float='true';
+    div.style.backgroundColor = "white";
+    div.style.boxShadow='5px 10px 10px 5px #888888'
+    div.style.borderRadius='45px'
+    div.style.marginTop='1cm'
+    div.style.borderStyle='solid'
+    div.style.borderColor='black'
+    div.style.textAlign='center';
+    div.style.fontFamily='cursive'
+    div.style.position='relative'
+    div.setAttribute('id','hidden')
+    const danger = `WARNING!!
+    This forcibly 
+    Loads the browser`;
+    div.innerText = danger;
+    document.getElementById("out").append(div);
+  };
+
+  MouseOut = () => {
+    const divs = document.getElementById("hidden");
+    divs.remove()
   };
 
   render() {
@@ -455,6 +472,8 @@ class App extends React.Component {
               onClick={() => {
                 window.location.reload();
               }}
+              onMouseOver={this.MouseOver}
+              onMouseOut={this.MouseOut}
               id="stop"
             >
               FORCE STOP
@@ -489,7 +508,7 @@ class App extends React.Component {
             onChange={this.rangeChange}
           />
         </div>
-        <div style={styles.array_contain}>
+        <div style={styles.array_contain} id="out">
           <div style={styles.bardiv} onLoad={this.createArray}>
             <Code view={this.state.view} />
             {arr.map((value, i) => (
