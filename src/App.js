@@ -148,6 +148,7 @@ const styles = {
   bardiv: {
     marginTop: "1cm",
     height: "17cm",
+    marginLeft:'0.1cm',
     marginRight: "0.7cm",
     position: "absolute",
     display: "block",
