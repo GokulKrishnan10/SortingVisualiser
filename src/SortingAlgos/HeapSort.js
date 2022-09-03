@@ -24,7 +24,7 @@ const heapify = function(arr, n, i, animations){
     for (let i = Math.floor(n / 2 - 1); i >= 0; i--) {
       heapify(arr, n, i, animations);
     }
-    console.log("After Sorted " + arr);
+   // console.log("After Sorted " + arr);
     for (let i = n - 1; i >= 0; i--) {
       animations.push([0, i]);
       animations.push([0, i]);

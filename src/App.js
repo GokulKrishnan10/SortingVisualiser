@@ -219,11 +219,11 @@ class App extends React.Component {
     this.setState({
       arr,
     });
-    console.log(arr);
+   // console.log(arr);
   };
 
   componentDidMount() {
-    console.log("Creating Array On Loading");
+   // console.log("Creating Array On Loading");
     this.createArray();
   }
 
@@ -315,7 +315,7 @@ class App extends React.Component {
     const animations = MergeSort(this.state.arr);
     for (let i = 0; i < animations.length; i++) {
       const arrayBars = document.getElementsByClassName("array_bar");
-      console.log(animations[i]);
+     // console.log(animations[i]);
       const colorchange = i % 3 !== 2;
       if (colorchange) {
         const [barOneIdx, barTwoIdx] = animations[i];
@@ -323,7 +323,7 @@ class App extends React.Component {
         const barTwoStyle = arrayBars[barTwoIdx].style;
         const color = i % 3 === 0 ? "red" : "turquoise";
         setTimeout(() => {
-          console.log(color);
+         // console.log(color);
           barOneStyle.backgroundColor = color;
           barTwoStyle.backgroundColor = color;
         }, i * 5);
@@ -350,7 +350,7 @@ class App extends React.Component {
     document.getElementById("stop").style.pointerEvents = "";
     const animations = BubbleSort(this.state.arr);
     const newAnimations = [];
-    console.log("Animations length " + animations.length);
+    //console.log("Animations length " + animations.length);
     for (const animie of animations) {
       newAnimations.push(animie.compare);
       newAnimations.push(animie.compare);
@@ -365,7 +365,7 @@ class App extends React.Component {
         const barTwoStyle = arrayBars[barTwoIdx].style;
         const color = i % 3 === 0 ? "red" : "turquoise";
         setTimeout(() => {
-          console.log(color);
+        //  console.log(color);
           barOneStyle.backgroundColor = color;
           barTwoStyle.backgroundColor = color;
           if (color === "red") {
@@ -380,7 +380,7 @@ class App extends React.Component {
         }, i * 10);
       }
     }
-    console.log("Completed Sorting");
+    //console.log("Completed Sorting");
     // setTimeout(callback,1000);
     //  document.querySelector('#range').style.pointerEvents="";
     /*   const { compare, swap } = animations[i];
@@ -408,7 +408,7 @@ class App extends React.Component {
     document
       .querySelectorAll("li")
       .forEach((items) => (items.style.pointerEvents = ""));
-    console.log(event.target.value);
+   // console.log(event.target.value);
     switch(true){
       case event.target.value <= 100:
         this.setState({ width: 13 });
