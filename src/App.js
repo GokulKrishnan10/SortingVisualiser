@@ -409,27 +409,61 @@ class App extends React.Component {
       .querySelectorAll("li")
       .forEach((items) => (items.style.pointerEvents = ""));
     console.log(event.target.value);
-    if (event.target.value <= 100) {
-      this.setState({ width: 13 });
-    } else if (event.target.value > 100 && event.target.value <= 134) {
-      this.setState({ width: 10 });
-    } else if (event.target.value > 134 && event.target.value <= 160) {
-      this.setState({ width: 8 });
-    } else if (event.target.value > 160 && event.target.value <= 184) {
-      this.setState({ width: 7 });
-    } else if (event.target.value > 184 && event.target.value <= 210) {
-      this.setState({ width: 6 });
-    } else if (event.target.value > 210 && event.target.value <= 243) {
-      this.setState({ width: 5 });
-    } else if (event.target.value > 243 && event.target.value <= 295) {
-      this.setState({ width: 4 });
-    } else if (event.target.value > 295 && event.target.value <= 327) {
-      this.setState({ width: 3.5 });
-    } else if (event.target.value > 327 && event.target.value <= 365) {
-      this.setState({ width: 3 });
-    } else {
-      this.setState({ width: 2.7 });
+    switch(true){
+      case event.target.value <= 100:
+        this.setState({ width: 13 });
+        break;
+      case event.target.value > 100 && event.target.value <= 134:
+        this.setState({ width: 10 });
+        break;
+      case event.target.value > 134 && event.target.value <= 160:
+        this.setState({ width: 8 });
+        break;
+      case event.target.value > 160 && event.target.value <= 184:
+        this.setState({ width: 7 });
+        break;
+      case event.target.value > 184 && event.target.value <= 210:
+        this.setState({ width: 6 });
+        break;
+      case event.target.value > 210 && event.target.value <= 243:
+        this.setState({ width: 5 });
+        break;
+      case event.target.value > 243 && event.target.value <= 295: 
+        this.setState({ width: 4 });
+        break;
+      case event.target.value > 295 && event.target.value <= 327:
+        this.setState({ width: 3.5 });
+        break;
+      case event.target.value > 327 && event.target.value <= 365:
+        this.setState({ width: 3 });
+        break;
+      case event.target.value>365:
+        this.setState({ width: 2.7 });
+        break;
+      default:
+        
     }
+    // if (event.target.value <= 100) {
+    //   this.setState({ width: 13 });
+    // } else if (event.target.value > 100 && event.target.value <= 134) {
+    //   this.setState({ width: 10 });
+    // } else if (event.target.value > 134 && event.target.value <= 160) {
+    //   this.setState({ width: 8 });
+    // } else if (event.target.value > 160 && event.target.value <= 184) {
+    //   this.setState({ width: 7 });
+    // } else if (event.target.value > 184 && event.target.value <= 210) {
+    //   this.setState({ width: 6 });
+    // } else if (event.target.value > 210 && event.target.value <= 243) {
+    //   this.setState({ width: 5 });
+    // } else if (event.target.value > 243 && event.target.value <= 295) {
+    //   this.setState({ width: 4 });
+    // } else if (event.target.value > 295 && event.target.value <= 327) {
+    //   this.setState({ width: 3.5 });
+    // } else if (event.target.value > 327 && event.target.value <= 365) {
+    //   this.setState({ width: 3 });
+    // } else {
+    //   this.setState({ width: 2.7 });
+    // }
     this.createArray();
     // console.log(this.state.arr)
   };
@@ -438,17 +472,17 @@ class App extends React.Component {
     const div = document.createElement("div");
     div.style.height = "2cm";
     div.style.width = "7cm";
-    div.style.float='true';
+    div.style.float = "true";
     div.style.backgroundColor = "white";
-    div.style.boxShadow='5px 10px 10px 5px #888888'
-    div.style.borderRadius='45px'
-    div.style.marginTop='1cm'
-    div.style.borderStyle='solid'
-    div.style.borderColor='black'
-    div.style.textAlign='center';
-    div.style.fontFamily='cursive'
-    div.style.position='relative'
-    div.setAttribute('id','hidden')
+    div.style.boxShadow = "5px 10px 10px 5px #888888";
+    div.style.borderRadius = "45px";
+    div.style.marginTop = "1cm";
+    div.style.borderStyle = "solid";
+    div.style.borderColor = "black";
+    div.style.textAlign = "center";
+    div.style.fontFamily = "cursive";
+    div.style.position = "relative";
+    div.setAttribute("id", "hidden");
     const danger = `WARNING!!
     This forcibly 
     Loads the browser`;
@@ -458,7 +492,7 @@ class App extends React.Component {
 
   MouseOut = () => {
     const divs = document.getElementById("hidden");
-    divs.remove()
+    divs.remove();
   };
 
   render() {
