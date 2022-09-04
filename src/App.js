@@ -554,7 +554,7 @@ class App extends React.Component {
     div.style.borderColor = "black";
     div.style.textAlign = "center";
     div.style.fontFamily = "cursive";
-    div.style.position = "relative";
+    div.style.position = "fixed",;
     div.setAttribute("id", "hidden");
     const danger = `WARNING!!
     This forcibly 
