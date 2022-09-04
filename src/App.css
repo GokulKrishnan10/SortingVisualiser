@@ -1,5 +1,6 @@
 body{
   background-color: black;
+  height: 40cm;
 }
 ul{
   margin-top: 0.3cm;
@@ -23,4 +24,8 @@ li:hover{
   cursor: pointer;
   color: black !important;
   background-color: aqua !important;;
+}
+#area1{
+  scrollbar-width: 1px;
+  scrollbar-color: red black;
 }

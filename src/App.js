@@ -20,11 +20,10 @@ let str = `class BubbleSort {
             arr[j + 1] = temp;
           }
         }
-      }  
+      }
     }
   }`;
-let str1=
-`class MergeSort {
+let str1 = `class MergeSort {
     void merge(int arr[], int l, int m, int r)
     {
         int n1 = m - l + 1;
@@ -75,31 +74,42 @@ let str1=
             merge(arr, l, m, r);
         }
     }
-  }`
-class Code extends React.Component {
-  render() {
-    return (
-      <div
-        className="div1"
-        style={{
-          display: this.props.view,
-          position: "absolute",
-          backgroundColor: " white",
-          marginLeft: "10cm",
-          width: "17cm",
-          height: "12cm",
-          borderRadius: "45px",
-        }}
-      >
-        <nav style={styles.nav1}>
-          <h3>Bubble Sort</h3>
-        </nav>
-        <textarea readonly="true" style={styles.textarea1}>
-          {str}
-        </textarea>
-      </div>
-    );
-  }
+  }`;
+function Code(props) {
+  return (
+    <div
+      style={{
+        display: "block",
+        position: "absolute",
+        backgroundColor: "white",
+        marginLeft: "10cm",
+        width: "17cm",
+        height: "12cm",
+        // borderRadius: "45px",
+        marginTop: "19cm",
+      }}
+    >
+      <nav style={styles.nav1}>
+        <h3>{props.view}</h3>
+      </nav>
+      <textarea
+        readOnly={true}
+        style={styles.textarea1}
+        id="area1"
+        value={
+          props.view === "Merge Sort"
+            ? str1
+            : props.view === "Bubble Sort"
+            ? str
+            : props.view === "Heap Sort"
+            ? "heap sort"
+            : props.view === "Quick sort"
+            ? "quick sort"
+            : "nothing"
+        }
+      />
+    </div>
+  );
 }
 
 const styles = {
@@ -201,7 +211,7 @@ const styles = {
   bardiv: {
     marginTop: "1cm",
     height: "17cm",
-    marginLeft:'0.1cm',
+    marginLeft: "0.1cm",
     marginRight: "0.7cm",
     position: "absolute",
     display: "block",
@@ -216,21 +226,22 @@ const styles = {
     borderRadius: "45px",
   },
   nav1: {
-    aligItems: "center",
-    justifyContent: "center",
+    marginLeft: "0.3cm",
     backgroundColor: "blue",
     width: "16.2cm",
     height: "1cm",
     fontFamily: '"Segoe UI", Tahoma, Geneva, Verdana, sans-serif',
     color: "white",
+    top: "0cm",
   },
   textarea1: {
     fontSize: "16px",
     resize: "none",
     width: "16cm",
     height: "10cm",
-    color: "blue",
-    borderColor: "white",
+    color: "white",
+    borderColor: "black",
+    backgroundColor: "black",
     marginLeft: "0.3cm",
   },
   forceStop: {
@@ -262,6 +273,7 @@ class App extends React.Component {
       view: "none",
       force: false,
       speed: 20,
+      name: "Sorting",
     };
   }
 
@@ -273,11 +285,11 @@ class App extends React.Component {
     this.setState({
       arr,
     });
-   // console.log(arr);
+    // console.log(arr);
   };
 
   componentDidMount() {
-   // console.log("Creating Array On Loading");
+    // console.log("Creating Array On Loading");
     this.createArray();
   }
 
@@ -350,12 +362,14 @@ class App extends React.Component {
               arrayBars[barTwoIdx].style.height = h1;
             }, 1);
           }
-        }, i * this.state.speed);//3
+        }, i * this.state.speed); //3
       }
     }
   };
 
   testMergeSort = () => {
+    // setTimeout(()=>{this.setState({name:'Merge Sort'})},1000)
+    this.setState({ name: "Merge Sort" });
     document.querySelectorAll("li").forEach((items) => {
       items.style.backgroundColor = "navy";
       items.style.color = "white";
@@ -366,32 +380,35 @@ class App extends React.Component {
       .querySelectorAll("li")
       .forEach((items) => (items.style.pointerEvents = "none"));
     document.getElementById("stop").style.pointerEvents = "";
-    const animations = MergeSort(this.state.arr);
-    for (let i = 0; i < animations.length; i++) {
-      const arrayBars = document.getElementsByClassName("array_bar");
-     // console.log(animations[i]);
-      const colorchange = i % 3 !== 2;
-      if (colorchange) {
-        const [barOneIdx, barTwoIdx] = animations[i];
-        const barOneStyle = arrayBars[barOneIdx].style;
-        const barTwoStyle = arrayBars[barTwoIdx].style;
-        const color = i % 3 === 0 ? "red" : "turquoise";
-        setTimeout(() => {
-         // console.log(color);
-          barOneStyle.backgroundColor = color;
-          barTwoStyle.backgroundColor = color;
-        }, i * this.state.speed);//5
-      } else {
-        setTimeout(() => {
-          const [barOneIdx, newHeight] = animations[i];
+    setTimeout(() => {
+      const animations = MergeSort(this.state.arr);
+      for (let i = 0; i < animations.length; i++) {
+        const arrayBars = document.getElementsByClassName("array_bar");
+        // console.log(animations[i]);
+        const colorchange = i % 3 !== 2;
+        if (colorchange) {
+          const [barOneIdx, barTwoIdx] = animations[i];
           const barOneStyle = arrayBars[barOneIdx].style;
-          barOneStyle.height = `${newHeight}px`;
-        }, i * this.state.speed);//5
+          const barTwoStyle = arrayBars[barTwoIdx].style;
+          const color = i % 3 === 0 ? "red" : "turquoise";
+          setTimeout(() => {
+            // console.log(color);
+            barOneStyle.backgroundColor = color;
+            barTwoStyle.backgroundColor = color;
+          }, i * this.state.speed); //5
+        } else {
+          setTimeout(() => {
+            const [barOneIdx, newHeight] = animations[i];
+            const barOneStyle = arrayBars[barOneIdx].style;
+            barOneStyle.height = `${newHeight}px`;
+          }, i * this.state.speed); //5
+        }
       }
-    }
+    }, 500);
   };
 
   testBubbleSort = () => {
+    this.setState({ name: "Bubble Sort" });
     document.querySelectorAll("li").forEach((items) => {
       items.style.backgroundColor = "navy";
       items.style.color = "white";
@@ -402,38 +419,41 @@ class App extends React.Component {
       .querySelectorAll("li")
       .forEach((items) => (items.style.pointerEvents = "none"));
     document.getElementById("stop").style.pointerEvents = "";
-    const animations = BubbleSort(this.state.arr);
-    const newAnimations = [];
-    //console.log("Animations length " + animations.length);
-    for (const animie of animations) {
-      newAnimations.push(animie.compare);
-      newAnimations.push(animie.compare);
-      newAnimations.push(animie.swap);
-    }
-    for (let i = 0; i < newAnimations.length; i++) {
-      const arrayBars = document.getElementsByClassName("array_bar");
-      const colorchange = i % 3 !== 2;
-      if (colorchange) {
-        const [barOneIdx, barTwoIdx] = newAnimations[i];
-        const barOneStyle = arrayBars[barOneIdx].style;
-        const barTwoStyle = arrayBars[barTwoIdx].style;
-        const color = i % 3 === 0 ? "red" : "turquoise";
-        setTimeout(() => {
-        //  console.log(color);
-          barOneStyle.backgroundColor = color;
-          barTwoStyle.backgroundColor = color;
-          if (color === "red") {
-            setTimeout(() => {
-              const [barOneIdx, barTwoIdx] = newAnimations[i];
-              var h1 = arrayBars[barOneIdx].style.height;
-              var h2 = arrayBars[barTwoIdx].style.height;
-              arrayBars[barOneIdx].style.height = h2;
-              arrayBars[barTwoIdx].style.height = h1;
-            }, 10);
-          }
-        }, i * this.state.speed);//10
+    setTimeout(() => {
+      const animations = BubbleSort(this.state.arr);
+      const newAnimations = [];
+      //console.log("Animations length " + animations.length);
+      for (const animie of animations) {
+        newAnimations.push(animie.compare);
+        newAnimations.push(animie.compare);
+        newAnimations.push(animie.swap);
       }
-    }
+      for (let i = 0; i < newAnimations.length; i++) {
+        const arrayBars = document.getElementsByClassName("array_bar");
+        const colorchange = i % 3 !== 2;
+        if (colorchange) {
+          const [barOneIdx, barTwoIdx] = newAnimations[i];
+          const barOneStyle = arrayBars[barOneIdx].style;
+          const barTwoStyle = arrayBars[barTwoIdx].style;
+          const color = i % 3 === 0 ? "red" : "turquoise";
+          setTimeout(() => {
+            //  console.log(color);
+            barOneStyle.backgroundColor = color;
+            barTwoStyle.backgroundColor = color;
+            if (color === "red") {
+              setTimeout(() => {
+                const [barOneIdx, barTwoIdx] = newAnimations[i];
+                var h1 = arrayBars[barOneIdx].style.height;
+                var h2 = arrayBars[barTwoIdx].style.height;
+                arrayBars[barOneIdx].style.height = h2;
+                arrayBars[barTwoIdx].style.height = h1;
+              }, 10);
+            }
+          }, i * this.state.speed); //10
+        }
+      }
+    }, 500);
+
     //console.log("Completed Sorting");
     // setTimeout(callback,1000);
     //  document.querySelector('#range').style.pointerEvents="";
@@ -462,40 +482,39 @@ class App extends React.Component {
     document
       .querySelectorAll("li")
       .forEach((items) => (items.style.pointerEvents = ""));
-   // console.log(event.target.value);
-    switch(true){
+    // console.log(event.target.value);
+    switch (true) {
       case event.target.value <= 100:
-        this.setState({ width: 13 ,speed:20});
+        this.setState({ width: 13, speed: 20 });
         break;
       case event.target.value > 100 && event.target.value <= 134:
-        this.setState({ width: 10 ,speed:17});
+        this.setState({ width: 10, speed: 17 });
         break;
       case event.target.value > 134 && event.target.value <= 160:
-        this.setState({ width: 8 ,speed:15});
+        this.setState({ width: 8, speed: 15 });
         break;
       case event.target.value > 160 && event.target.value <= 184:
-        this.setState({ width: 7 ,speed:14});
+        this.setState({ width: 7, speed: 14 });
         break;
       case event.target.value > 184 && event.target.value <= 210:
-        this.setState({ width: 6 ,speed:13});
+        this.setState({ width: 6, speed: 13 });
         break;
       case event.target.value > 210 && event.target.value <= 243:
-        this.setState({ width: 5 ,speed:12});
+        this.setState({ width: 5, speed: 12 });
         break;
-      case event.target.value > 243 && event.target.value <= 295: 
-        this.setState({ width: 4 ,speed:10});
+      case event.target.value > 243 && event.target.value <= 295:
+        this.setState({ width: 4, speed: 10 });
         break;
       case event.target.value > 295 && event.target.value <= 327:
-        this.setState({ width: 3.5 ,speed:9});
+        this.setState({ width: 3.5, speed: 9 });
         break;
       case event.target.value > 327 && event.target.value <= 365:
-        this.setState({ width: 3 ,speed:9});
+        this.setState({ width: 3, speed: 9 });
         break;
-      case event.target.value>365:
-        this.setState({ width: 2.7 ,speed:5});
+      case event.target.value > 365:
+        this.setState({ width: 2.7, speed: 5 });
         break;
       default:
-        
     }
     // if (event.target.value <= 100) {
     //   this.setState({ width: 13 });
@@ -591,7 +610,6 @@ class App extends React.Component {
         </div>
         <div style={styles.array_contain} id="out">
           <div style={styles.bardiv} onLoad={this.createArray}>
-            <Code view={this.state.view} />
             {arr.map((value, i) => (
               <div
                 className="array_bar"
@@ -606,6 +624,7 @@ class App extends React.Component {
               ></div>
             ))}
           </div>
+          <Code view={this.state.name} />
         </div>
       </>
     );
