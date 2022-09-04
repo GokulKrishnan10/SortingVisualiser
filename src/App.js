@@ -550,6 +550,7 @@ class App extends React.Component {
     div.style.boxShadow = "5px 10px 10px 5px #888888";
     div.style.borderRadius = "45px";
     div.style.marginTop = "1cm";
+    div.style.marginLeft="5cm";
     div.style.borderStyle = "solid";
     div.style.borderColor = "black";
     div.style.textAlign = "center";
