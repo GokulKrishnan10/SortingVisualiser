@@ -297,7 +297,7 @@ class App extends React.Component {
               arrayBars[barTwoIdx].style.height = h1;
             }, 1);
           }
-        }, i * 3);
+        }, i * this.state.speed);//3
       }
     }
   };
@@ -327,13 +327,13 @@ class App extends React.Component {
          // console.log(color);
           barOneStyle.backgroundColor = color;
           barTwoStyle.backgroundColor = color;
-        }, i * 5);
+        }, i * this.state.speed);//5
       } else {
         setTimeout(() => {
           const [barOneIdx, newHeight] = animations[i];
           const barOneStyle = arrayBars[barOneIdx].style;
           barOneStyle.height = `${newHeight}px`;
-        }, i * 5);
+        }, i * this.state.speed);//5
       }
     }
   };
@@ -378,7 +378,7 @@ class App extends React.Component {
               arrayBars[barTwoIdx].style.height = h1;
             }, 10);
           }
-        }, i * 10);
+        }, i * this.state.speed);//10
       }
     }
     //console.log("Completed Sorting");
@@ -412,34 +412,34 @@ class App extends React.Component {
    // console.log(event.target.value);
     switch(true){
       case event.target.value <= 100:
-        this.setState({ width: 13 });
+        this.setState({ width: 13 ,speed:20});
         break;
       case event.target.value > 100 && event.target.value <= 134:
-        this.setState({ width: 10 });
+        this.setState({ width: 10 ,speed:17});
         break;
       case event.target.value > 134 && event.target.value <= 160:
-        this.setState({ width: 8 });
+        this.setState({ width: 8 ,speed:15});
         break;
       case event.target.value > 160 && event.target.value <= 184:
-        this.setState({ width: 7 });
+        this.setState({ width: 7 ,speed:14});
         break;
       case event.target.value > 184 && event.target.value <= 210:
-        this.setState({ width: 6 });
+        this.setState({ width: 6 ,speed:13});
         break;
       case event.target.value > 210 && event.target.value <= 243:
-        this.setState({ width: 5 });
+        this.setState({ width: 5 ,speed:12});
         break;
       case event.target.value > 243 && event.target.value <= 295: 
-        this.setState({ width: 4 });
+        this.setState({ width: 4 ,speed:10});
         break;
       case event.target.value > 295 && event.target.value <= 327:
-        this.setState({ width: 3.5 });
+        this.setState({ width: 3.5 ,speed:9});
         break;
       case event.target.value > 327 && event.target.value <= 365:
-        this.setState({ width: 3 });
+        this.setState({ width: 3 ,speed:9});
         break;
       case event.target.value>365:
-        this.setState({ width: 2.7 });
+        this.setState({ width: 2.7 ,speed:5});
         break;
       default:
         
