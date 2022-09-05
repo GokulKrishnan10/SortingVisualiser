@@ -63,18 +63,85 @@ let str1 = `class MergeSort {
     void sort(int arr[], int l, int r)
     {
         if (l < r) {
-            // Find the middle point
-            int m =l+ (r-l)/2;
   
-            // Sort first and second halves
+            int m =l+ (r-l)/2;
+
             sort(arr, l, m);
             sort(arr, m + 1, r);
   
-            // Merge the sorted halves
             merge(arr, l, m, r);
         }
     }
   }`;
+let str2 = `
+class HeapSort {
+  public void heapify(int[] arr,int n,int i){
+      int large=i;
+      int left=(2*i)+1;
+      int right=(2*i)+2;
+      if(left<n && arr[left]>arr[large]){
+          large=left;
+      }
+      if(right<n && arr[right]>arr[large]){
+          large=right;
+      }
+      if(large!=i){
+          int t=arr[i];
+          arr[i]=arr[large];
+          arr[large]=t;
+          heapify(arr,n,large);
+      }
+  }
+  public void buildmaxheap(int[] arr){
+      int n=arr.length;
+      for(int i=n/2-1;i>=0;i--){
+          heapify(arr,n,i);
+      }
+  }
+  void heapsort(int[] arr){
+      buildmaxheap(arr);
+      int n=arr.length;
+      for(int i=n-1;i>=0;i--){
+          int t=arr[0];
+          arr[0]=arr[i];
+          arr[i]=t;
+          heapify(arr,i,0);
+      }
+  }
+}`;
+let str3 = 
+`public class QuickSort {
+  public int randPartition(int[] arr,int s,int e){
+      int pivotIndex=(int)(Math.random()*(e-s)+s);
+      int t=arr[pivotIndex];
+      arr[pivotIndex]=arr[e];
+      arr[e]=t;
+      return partition(arr,s,e);
+  }
+  public int partition(int[] arr,int s,int e){
+      int pivot=arr[e];
+      int pIndex=s;
+      for(int i=s;i<e;i++){
+          if(arr[i]<=pivot)
+              int t=arr[i];
+              arr[i]=arr[pIndex];
+              arr[pIndex]=t;
+              pIndex++;
+          }
+      }
+      int t=arr[pIndex];
+      arr[pIndex]=arr[e];
+      arr[e]=t;
+      return pIndex;
+  }
+  public void quickSort(int[] arr,int s,int e){
+      if(s<e){
+          int pIndex=randPartition(arr,s,e);
+          quickSort(arr,s,pIndex-1);
+          quickSort(arr,pIndex+1,e);
+      }
+  }
+}`;
 function Code(props) {
   return (
     <div
@@ -102,9 +169,9 @@ function Code(props) {
             : props.view === "Bubble Sort"
             ? str
             : props.view === "Heap Sort"
-            ? "heap sort"
-            : props.view === "Quick sort"
-            ? "quick sort"
+            ? str2
+            : props.view === "Quick Sort"
+            ? str3
             : "nothing"
         }
       />
@@ -294,43 +361,47 @@ class App extends React.Component {
   }
 
   testHeapSort = () => {
+    this.setState({ name: "Heap Sort" });
     document.querySelectorAll("li").forEach((items) => {
       items.style.backgroundColor = "navy";
       items.style.color = "white";
     });
     document.getElementById("4").style.backgroundColor = "aqua";
     document.getElementById("4").style.color = "black";
-    const animations = HeapSort(this.state.arr);
     document
       .querySelectorAll("li")
       .forEach((items) => (items.style.pointerEvents = "none"));
     document.getElementById("stop").style.pointerEvents = "";
-    for (let i = 0; i < animations.length; i++) {
-      const arrayBars = document.getElementsByClassName("array_bar");
-      const colorchange = i % 3 !== 2;
-      if (colorchange) {
-        const [barOneIdx, barTwoIdx] = animations[i];
-        const barOneStyle = arrayBars[barOneIdx].style;
-        const barTwoStyle = arrayBars[barTwoIdx].style;
-        const color = i % 3 === 0 ? "red" : "turquoise";
-        setTimeout(() => {
-          barOneStyle.backgroundColor = color;
-          barTwoStyle.backgroundColor = color;
-          if (color === "red") {
-            setTimeout(() => {
-              const [barOneIdx, barTwoIdx] = animations[i];
-              var h1 = arrayBars[barOneIdx].style.height;
-              var h2 = arrayBars[barTwoIdx].style.height;
-              arrayBars[barOneIdx].style.height = h2;
-              arrayBars[barTwoIdx].style.height = h1;
-            }, 2);
-          }
-        }, i * this.state.speed);
+    setTimeout(() => {
+      const animations = HeapSort(this.state.arr);
+      for (let i = 0; i < animations.length; i++) {
+        const arrayBars = document.getElementsByClassName("array_bar");
+        const colorchange = i % 3 !== 2;
+        if (colorchange) {
+          const [barOneIdx, barTwoIdx] = animations[i];
+          const barOneStyle = arrayBars[barOneIdx].style;
+          const barTwoStyle = arrayBars[barTwoIdx].style;
+          const color = i % 3 === 0 ? "red" : "turquoise";
+          setTimeout(() => {
+            barOneStyle.backgroundColor = color;
+            barTwoStyle.backgroundColor = color;
+            if (color === "red") {
+              setTimeout(() => {
+                const [barOneIdx, barTwoIdx] = animations[i];
+                var h1 = arrayBars[barOneIdx].style.height;
+                var h2 = arrayBars[barTwoIdx].style.height;
+                arrayBars[barOneIdx].style.height = h2;
+                arrayBars[barTwoIdx].style.height = h1;
+              }, 2);
+            }
+          }, i * this.state.speed);
+        }
       }
-    }
+    }, 500);
   };
 
   testQuickSort = () => {
+    this.setState({ name: "Quick Sort" });
     document.querySelectorAll("li").forEach((items) => {
       items.style.backgroundColor = "navy";
       items.style.color = "white";
@@ -341,30 +412,32 @@ class App extends React.Component {
       .querySelectorAll("li")
       .forEach((items) => (items.style.pointerEvents = "none"));
     document.getElementById("stop").style.pointerEvents = "";
-    const animations = QuickSort(this.state.arr);
-    for (let i = 0; i < animations.length; i++) {
-      const arrayBars = document.getElementsByClassName("array_bar");
-      const colorchange = i % 3 !== 2;
-      if (colorchange) {
-        const [barOneIdx, barTwoIdx] = animations[i];
-        const barOneStyle = arrayBars[barOneIdx].style;
-        const barTwoStyle = arrayBars[barTwoIdx].style;
-        const color = i % 3 === 0 ? "red" : "turquoise";
-        setTimeout(() => {
-          barOneStyle.backgroundColor = color;
-          barTwoStyle.backgroundColor = color;
-          if (color === "red") {
-            setTimeout(() => {
-              const [barOneIdx, barTwoIdx] = animations[i];
-              var h1 = arrayBars[barOneIdx].style.height;
-              var h2 = arrayBars[barTwoIdx].style.height;
-              arrayBars[barOneIdx].style.height = h2;
-              arrayBars[barTwoIdx].style.height = h1;
-            }, 1);
-          }
-        }, i * this.state.speed); //3
+    setTimeout(() => {
+      const animations = QuickSort(this.state.arr);
+      for (let i = 0; i < animations.length; i++) {
+        const arrayBars = document.getElementsByClassName("array_bar");
+        const colorchange = i % 3 !== 2;
+        if (colorchange) {
+          const [barOneIdx, barTwoIdx] = animations[i];
+          const barOneStyle = arrayBars[barOneIdx].style;
+          const barTwoStyle = arrayBars[barTwoIdx].style;
+          const color = i % 3 === 0 ? "red" : "turquoise";
+          setTimeout(() => {
+            barOneStyle.backgroundColor = color;
+            barTwoStyle.backgroundColor = color;
+            if (color === "red") {
+              setTimeout(() => {
+                const [barOneIdx, barTwoIdx] = animations[i];
+                var h1 = arrayBars[barOneIdx].style.height;
+                var h2 = arrayBars[barTwoIdx].style.height;
+                arrayBars[barOneIdx].style.height = h2;
+                arrayBars[barTwoIdx].style.height = h1;
+              }, 1);
+            }
+          }, i * this.state.speed); //3
+        }
       }
-    }
+    }, 500);
   };
 
   testMergeSort = () => {
@@ -550,7 +623,7 @@ class App extends React.Component {
     div.style.boxShadow = "5px 10px 10px 5px #888888";
     div.style.borderRadius = "45px";
     div.style.marginTop = "1cm";
-    div.style.marginLeft="5cm";
+    div.style.marginLeft = "5cm";
     div.style.borderStyle = "solid";
     div.style.borderColor = "black";
     div.style.textAlign = "center";
@@ -609,6 +682,7 @@ class App extends React.Component {
             onChange={this.rangeChange}
           />
         </div>
+
         <div style={styles.array_contain} id="out">
           <div style={styles.bardiv} onLoad={this.createArray}>
             {arr.map((value, i) => (
