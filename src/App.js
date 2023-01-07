@@ -441,7 +441,6 @@ class App extends React.Component {
   };
 
   testMergeSort = () => {
-    // setTimeout(()=>{this.setState({name:'Merge Sort'})},1000)
     this.setState({ name: "Merge Sort" });
     document.querySelectorAll("li").forEach((items) => {
       items.style.backgroundColor = "navy";
@@ -457,7 +456,6 @@ class App extends React.Component {
       const animations = MergeSort(this.state.arr);
       for (let i = 0; i < animations.length; i++) {
         const arrayBars = document.getElementsByClassName("array_bar");
-        // console.log(animations[i]);
         const colorchange = i % 3 !== 2;
         if (colorchange) {
           const [barOneIdx, barTwoIdx] = animations[i];
@@ -465,7 +463,6 @@ class App extends React.Component {
           const barTwoStyle = arrayBars[barTwoIdx].style;
           const color = i % 3 === 0 ? "red" : "turquoise";
           setTimeout(() => {
-            // console.log(color);
             barOneStyle.backgroundColor = color;
             barTwoStyle.backgroundColor = color;
           }, i * this.state.speed); //5
@@ -495,7 +492,6 @@ class App extends React.Component {
     setTimeout(() => {
       const animations = BubbleSort(this.state.arr);
       const newAnimations = [];
-      //console.log("Animations length " + animations.length);
       for (const animie of animations) {
         newAnimations.push(animie.compare);
         newAnimations.push(animie.compare);
@@ -510,7 +506,6 @@ class App extends React.Component {
           const barTwoStyle = arrayBars[barTwoIdx].style;
           const color = i % 3 === 0 ? "red" : "turquoise";
           setTimeout(() => {
-            //  console.log(color);
             barOneStyle.backgroundColor = color;
             barTwoStyle.backgroundColor = color;
             if (color === "red") {
@@ -526,26 +521,6 @@ class App extends React.Component {
         }
       }
     }, 500);
-
-    //console.log("Completed Sorting");
-    // setTimeout(callback,1000);
-    //  document.querySelector('#range').style.pointerEvents="";
-    /*   const { compare, swap } = animations[i];
-           console.log("ith element is " + animations[i].compare)
-           setTimeout(() => {
-               const arrayBars = document.getElementsByClassName('array_bar');
-               arrayBars[compare[1]].style.backgroundColor = 'red';
-               arrayBars[compare[0]].style.backgroundColor = 'red';
-               var h1 = arrayBars[compare[1]].style.height
-               var h2 = arrayBars[compare[0]].style.height
-               arrayBars[compare[1]].style.height = h2;
-               arrayBars[compare[0]].style.height = h1;
-               setTimeout(() => {
-                   arrayBars[compare[1]].style.backgroundColor = 'torquoise'
-                   arrayBars[compare[0]].style.backgroundColor = 'torquoise'
-               }, (i + 1) * 10);
-  
-           }, i * 10);*/
   };
 
   rangeChange = (event) => {
@@ -555,7 +530,6 @@ class App extends React.Component {
     document
       .querySelectorAll("li")
       .forEach((items) => (items.style.pointerEvents = ""));
-    // console.log(event.target.value);
     switch (true) {
       case event.target.value <= 100:
         this.setState({ width: 13, speed: 20 });
@@ -589,29 +563,9 @@ class App extends React.Component {
         break;
       default:
     }
-    // if (event.target.value <= 100) {
-    //   this.setState({ width: 13 });
-    // } else if (event.target.value > 100 && event.target.value <= 134) {
-    //   this.setState({ width: 10 });
-    // } else if (event.target.value > 134 && event.target.value <= 160) {
-    //   this.setState({ width: 8 });
-    // } else if (event.target.value > 160 && event.target.value <= 184) {
-    //   this.setState({ width: 7 });
-    // } else if (event.target.value > 184 && event.target.value <= 210) {
-    //   this.setState({ width: 6 });
-    // } else if (event.target.value > 210 && event.target.value <= 243) {
-    //   this.setState({ width: 5 });
-    // } else if (event.target.value > 243 && event.target.value <= 295) {
-    //   this.setState({ width: 4 });
-    // } else if (event.target.value > 295 && event.target.value <= 327) {
-    //   this.setState({ width: 3.5 });
-    // } else if (event.target.value > 327 && event.target.value <= 365) {
-    //   this.setState({ width: 3 });
-    // } else {
-    //   this.setState({ width: 2.7 });
-    // }
+
     this.createArray();
-    // console.log(this.state.arr)
+
   };
 
   MouseOver = () => {
