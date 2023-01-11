@@ -109,8 +109,7 @@ class HeapSort {
       }
   }
 }`;
-let str3 = 
-`public class QuickSort {
+let str3 = `public class QuickSort {
   public int randPartition(int[] arr,int s,int e){
       int pivotIndex=(int)(Math.random()*(e-s)+s);
       int t=arr[pivotIndex];
@@ -194,10 +193,10 @@ const styles = {
   },
   array_contain: {
     marginTop: "1.7cm",
-    marginLeft: " 1.5cm",
+    marginLeft: "0.1cm",
     position: "absolute",
     left: "10px",
-    width: "40cm",
+    width: "100%",
     backgroundColor: "black",
   },
   button: {
@@ -279,7 +278,7 @@ const styles = {
     marginTop: "1cm",
     height: "17cm",
     marginLeft: "0.1cm",
-    marginRight: "0.7cm",
+    marginRight: "1cm",
     position: "absolute",
     display: "block",
   },
@@ -565,35 +564,6 @@ class App extends React.Component {
     }
 
     this.createArray();
-
-  };
-
-  MouseOver = () => {
-    const div = document.createElement("div");
-    div.style.height = "2cm";
-    div.style.width = "7cm";
-    div.style.float = "true";
-    div.style.backgroundColor = "white";
-    div.style.boxShadow = "5px 10px 10px 5px #888888";
-    div.style.borderRadius = "45px";
-    div.style.marginTop = "1cm";
-    div.style.marginLeft = "5cm";
-    div.style.borderStyle = "solid";
-    div.style.borderColor = "black";
-    div.style.textAlign = "center";
-    div.style.fontFamily = "cursive";
-    div.style.position = "fixed";
-    div.setAttribute("id", "hidden");
-    const danger = `WARNING!!
-    This forcibly 
-    Loads the browser`;
-    div.innerText = danger;
-    document.getElementById("out").append(div);
-  };
-
-  MouseOut = () => {
-    const divs = document.getElementById("hidden");
-    divs.remove();
   };
 
   render() {
@@ -605,10 +575,9 @@ class App extends React.Component {
           <ul>
             <li
               onClick={() => {
+                window.alert("Force Reload");
                 window.location.reload();
               }}
-              onMouseOver={this.MouseOver}
-              onMouseOut={this.MouseOut}
               id="stop"
             >
               FORCE STOP

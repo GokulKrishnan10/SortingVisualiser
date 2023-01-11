@@ -32,3 +32,11 @@ li:hover {
 body {
   margin: 0;
 }
+div {
+  margin: 0;
+}
+html {
+  margin: 0;
+  user-select: none;
+  overflow-x: hidden;
+}
