@@ -527,7 +527,6 @@ class App extends React.Component {
         document.getElementById("range").style.pointerEvents = "";
         const arrayBars = document.getElementsByClassName("array_bar");
         let A = Array.from(arrayBars);
-        console.log(A);
         for (let i = 0; i < A.length; i++) {
           setTimeout(() => {
             A[i].style.backgroundColor = "red";
