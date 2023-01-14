@@ -351,6 +351,10 @@ class App extends React.Component {
     this.setState({
       arr,
     });
+    const A = document.getElementsByClassName("array_bar");
+    Array.from(A).forEach((e) => {
+      e.style.backgroundColor = "turquoise";
+    });
     // console.log(arr);
   };
 
@@ -371,8 +375,11 @@ class App extends React.Component {
       .querySelectorAll("li")
       .forEach((items) => (items.style.pointerEvents = "none"));
     document.getElementById("stop").style.pointerEvents = "";
+    let n = 0;
+    document.getElementById("range").style.pointerEvents = "none";
     setTimeout(() => {
       const animations = HeapSort(this.state.arr);
+      n = animations.length;
       for (let i = 0; i < animations.length; i++) {
         const arrayBars = document.getElementsByClassName("array_bar");
         const colorchange = i % 3 !== 2;
@@ -397,6 +404,23 @@ class App extends React.Component {
         }
       }
     }, 500);
+    setTimeout(() => {
+      setTimeout(() => {
+        document.getElementById("range").style.pointerEvents = "";
+        console.log("gokul krishnAN E HERE", this.state.speed * n + n + 500);
+        const arrayBars = document.getElementsByClassName("array_bar");
+        console.log(arrayBars.length);
+        console.log(arrayBars[0]);
+        //arrayBars[80].style.backgroundColor = "red";
+        let A = Array.from(arrayBars);
+        A.forEach((e) => {
+          setTimeout(() => {
+            console.log("NO");
+            e.style.backgroundColor = "red";
+          });
+        });
+      }, this.state.speed * n + n - 2000);
+    }, 1000);
   };
 
   testQuickSort = () => {
@@ -411,8 +435,12 @@ class App extends React.Component {
       .querySelectorAll("li")
       .forEach((items) => (items.style.pointerEvents = "none"));
     document.getElementById("stop").style.pointerEvents = "";
+    document.getElementById("range").style.pointerEvents = "none";
+    let n = 0;
+    document.getElementById("range").style.pointerEvents = "none";
     setTimeout(() => {
       const animations = QuickSort(this.state.arr);
+      n = animations.length;
       for (let i = 0; i < animations.length; i++) {
         const arrayBars = document.getElementsByClassName("array_bar");
         const colorchange = i % 3 !== 2;
@@ -437,6 +465,23 @@ class App extends React.Component {
         }
       }
     }, 500);
+    setTimeout(() => {
+      setTimeout(() => {
+        document.getElementById("range").style.pointerEvents = "";
+        console.log("gokul krishnAN E HERE", this.state.speed * n + n + 500);
+        const arrayBars = document.getElementsByClassName("array_bar");
+        console.log(arrayBars.length);
+        console.log(arrayBars[0]);
+        //arrayBars[80].style.backgroundColor = "red";
+        let A = Array.from(arrayBars);
+        A.forEach((e) => {
+          setTimeout(() => {
+            console.log("NO");
+            e.style.backgroundColor = "red";
+          });
+        });
+      }, this.state.speed * n + n - 2000);
+    }, 1000);
   };
 
   testMergeSort = () => {
@@ -451,8 +496,11 @@ class App extends React.Component {
       .querySelectorAll("li")
       .forEach((items) => (items.style.pointerEvents = "none"));
     document.getElementById("stop").style.pointerEvents = "";
+    document.getElementById("range").style.pointerEvents = "none";
+    let n = 0;
     setTimeout(() => {
       const animations = MergeSort(this.state.arr);
+      n = animations.length;
       for (let i = 0; i < animations.length; i++) {
         const arrayBars = document.getElementsByClassName("array_bar");
         const colorchange = i % 3 !== 2;
@@ -474,9 +522,23 @@ class App extends React.Component {
         }
       }
     }, 500);
+    setTimeout(() => {
+      setTimeout(() => {
+        document.getElementById("range").style.pointerEvents = "";
+        const arrayBars = document.getElementsByClassName("array_bar");
+        let A = Array.from(arrayBars);
+        console.log(A);
+        for (let i = 0; i < A.length; i++) {
+          setTimeout(() => {
+            A[i].style.backgroundColor = "red";
+          }, i + 500);
+        }
+      }, this.state.speed * n + n - 2000);
+    }, 1000);
   };
 
   testBubbleSort = () => {
+    let lock = false;
     this.setState({ name: "Bubble Sort" });
     document.querySelectorAll("li").forEach((items) => {
       items.style.backgroundColor = "navy";
@@ -488,8 +550,11 @@ class App extends React.Component {
       .querySelectorAll("li")
       .forEach((items) => (items.style.pointerEvents = "none"));
     document.getElementById("stop").style.pointerEvents = "";
+    document.getElementById("range").style.pointerEvents = "none";
+    let n = 0;
     setTimeout(() => {
       const animations = BubbleSort(this.state.arr);
+      n = animations.length;
       const newAnimations = [];
       for (const animie of animations) {
         newAnimations.push(animie.compare);
@@ -520,6 +585,23 @@ class App extends React.Component {
         }
       }
     }, 500);
+    setTimeout(() => {
+      setTimeout(() => {
+        document.getElementById("range").style.pointerEvents = "";
+        console.log("gokul krishnAN E HERE", this.state.speed * n + n + 500);
+        const arrayBars = document.getElementsByClassName("array_bar");
+        console.log(arrayBars.length);
+        console.log(arrayBars[0]);
+        //arrayBars[80].style.backgroundColor = "red";
+        let A = Array.from(arrayBars);
+        A.forEach((e) => {
+          setTimeout(() => {
+            console.log("NO");
+            e.style.backgroundColor = "red";
+          }, 1000);
+        });
+      }, this.state.speed * n + n - 2000);
+    }, 1000);
   };
 
   rangeChange = (event) => {
