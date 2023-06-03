@@ -259,7 +259,6 @@ class App extends React.Component {
   };
 
   testBubbleSort = () => {
-    let lock = false;
     this.setState({ name: "Bubble Sort" });
     document.querySelectorAll("li").forEach((items) => {
       items.style.backgroundColor = "navy";
